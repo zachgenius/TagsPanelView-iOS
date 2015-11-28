@@ -1,0 +1,2 @@
+# TagsPanelView-iOS
+直接绘制Tag到UIView中，可以使tag很多并且在UITableViewCell中时，可以快速显示滑动无卡顿
