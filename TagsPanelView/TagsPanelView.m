@@ -33,7 +33,7 @@
 - (float)fontSize
 {
     if (!_fontSize) {
-        _fontSize = 16;
+        _fontSize = 14;
     }
     
     return _fontSize;
@@ -42,17 +42,18 @@
 - (UIColor *)tagTextColor
 {
     if (!_tagTextColor) {
-        _tagTextColor = [UIColor darkGrayColor];
+        _tagTextColor = [UIColor whiteColor];
     }
     return _tagTextColor;
 }
 
-- (UIColor *)tagBackgroundColor
+- (NSArray<UIColor *> *)tagsBackgroundColorsArray
 {
-    if (!_tagBackgroundColor) {
-        _tagBackgroundColor = [UIColor whiteColor];
+    if (_tagsBackgroundColorsArray) {
+        return _tagsBackgroundColorsArray;
     }
-    return _tagBackgroundColor;
+    _tagsBackgroundColorsArray = @[[UIColor greenColor]];
+    return _tagsBackgroundColorsArray;
 }
 
 - (void)drawRect:(CGRect)rect
@@ -62,6 +63,7 @@
     CGFloat width = 0;
     CGFloat height = 0;
     if (self.tagArray.count > 0) {
+        int count = 0;
         for (NSString* tag in _tagArray) {
             CGSize textSize = [tag sizeWithAttributes:@{NSFontAttributeName : [UIFont systemFontOfSize:self.fontSize]}];
             if (width > 0 && width + textSize.width + 2*kTagPadding > rect.size.width) {
@@ -69,13 +71,22 @@
                 height += kTagMargin + kTagHeight;
             }
             CGRect theRect = CGRectMake(width, height, textSize.width + 2*kTagPadding, kTagHeight);
-            [self drawRoundCornerRect:context rect:theRect solidColor:_tagBackgroundColor.CGColor];
+            CGColorRef color;
+            if (self.tagsBackgroundColorsArray.count > count) {
+                color = self.tagsBackgroundColorsArray[count].CGColor;
+            }
+            else
+            {
+                color = self.tagsBackgroundColorsArray[self.tagsBackgroundColorsArray.count - 1].CGColor;
+            }
+            [self drawRoundCornerRect:context rect:theRect solidColor:color];
             [tag drawAtPoint:CGPointMake(width + kTagPadding, height + (kTagHeight - textSize.height)/2.0)
-              withAttributes:@{NSForegroundColorAttributeName : _tagTextColor,
-                               NSFontAttributeName : [UIFont systemFontOfSize:_fontSize]}];
+              withAttributes:@{NSForegroundColorAttributeName : self.tagTextColor,
+                               NSFontAttributeName : [UIFont systemFontOfSize:self.fontSize]}];
             CGContextSaveGState(context);
             CGContextRestoreGState(context);
             width += textSize.width + kTagMargin + 2*kTagPadding;
+            count ++;
         }
     }
     

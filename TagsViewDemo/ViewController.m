@@ -139,9 +139,6 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     TagsTableViewCell* cell = [tableView dequeueReusableCellWithIdentifier:@"cell"];
-    cell.tagPanelView.fontSize = 16;
-    cell.tagPanelView.tagTextColor = [UIColor whiteColor];
-    cell.tagPanelView.tagBackgroundColor = [UIColor greenColor];
     cell.tagArray = _tagsArray[indexPath.row];
     return cell;
 }
