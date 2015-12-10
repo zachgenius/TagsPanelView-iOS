@@ -25,7 +25,7 @@
     _tagArray = tagArray;
     _tagPanelView.tagArray = tagArray;
     CGFloat width = [UIScreen mainScreen].bounds.size.width;
-    float panelHeight = [TagsPanelView generatePanelHeightThatFitSize:CGSizeMake(width, CGFLOAT_MAX) tags:tagArray fontSize:16];
+    float panelHeight = [TagsPanelView generatePanelHeightThatFitSize:CGSizeMake(width, CGFLOAT_MAX) tags:tagArray fontSize:14];
     _tagPanelView.frame = CGRectMake(0, 10, width, panelHeight);
     [_tagPanelView setNeedsDisplay];
 }
