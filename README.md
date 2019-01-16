@@ -48,9 +48,3 @@ Requirements? No, eh, maybe. At least it works on iOS 7+.
 #License
 TagsViewPanel is released under the MIT license. See LICENSE for details.
 
-#At last
-Well it's an advertisement for our APP, which called `翻牌子`. English name is `ForFun` (well, you can't search the english name in AppStore.). It's a LGBT (don't know what it means? google it) pairing and instant message app that maybe looks like `tinder`. But we are adding various of features on it. 
-
-AppStore --> [F*ck me](https://itunes.apple.com/us/app/fan-pai-zi-zui-jia-tong-zhi/id979814640?l=zh&ls=1&mt=8)
-
-
